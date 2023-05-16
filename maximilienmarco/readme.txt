@@ -1,63 +1,35 @@
-# Bloc de Commandes - API
+# Gestion des commandes avec Spring Boot et Kotlin
 
-Ce projet implémente un bloc de commandes pour une API utilisant Spring et Kotlin. Le bloc de commandes permet d'exécuter des commandes spécifiques à partir de la ligne de commande, fournissant ainsi une interface en ligne de commande pour interagir avec l'API.
+Ce projet est une application Spring Boot en Kotlin qui permet de gérer des commandes. L'application génère automatiquement une table "commande" avec les colonnes nom, type et prix dans une base de données MySQL lors du démarrage.
 
-## Fonctionnalités
+## Configuration de la base de données
 
-- Prise en charge de la commande "maCommande" avec des options et des arguments personnalisables.
-- Utilisation de la bibliothèque picocli pour la gestion des commandes et des arguments de ligne de commande.
-- Intégration avec Spring Boot pour une configuration et une exécution faciles.
+La base de données utilisée est MySQL. Assurez-vous d'avoir une instance de MySQL exécutée et configurez les informations de connexion dans le fichier `application.properties`.
 
-## Exécution de l'API
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/commandes?createDatabaseIfNotExist=true&serverTimezone=UTC
+spring.datasource.username=<votre_nom_utilisateur>
+spring.datasource.password=<votre_mot_de_passe>
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+Remplacez <votre_nom_utilisateur> et <votre_mot_de_passe> par vos informations d'identification MySQL.
 
-1. Assurez-vous que Java est installé sur votre système.
-2. Clonez le dépôt et accédez au répertoire du projet.
-3. Exécutez la commande suivante pour générer le fichier JAR exécutable :
+Structure du projet
+Le projet est structuré comme suit :
 
-./gradlew build
+com.example.maximilienmarco.entity: Ce package contient l'entité Commande qui représente une commande avec les propriétés nom, type et prix.
+com.example.maximilienmarco.repository: Ce package contient l'interface CommandeRepository qui étend JpaRepository et permet d'effectuer des opérations CRUD sur les commandes.
+com.example.maximilienmarco.controller: Ce package contient le contrôleur CommandeController qui gère les opérations liées aux commandes, telles que la création, la lecture, la mise à jour et la suppression.
+com.example.maximilienmarco: Ce package contient la classe principale MaximilienmarcoApplication qui démarre l'application.
+Endpoints du contrôleur
+Le contrôleur CommandeController expose les endpoints suivants :
 
-4. Une fois la construction terminée, exécutez l'API avec la commande :
+GET /commandes: Récupère toutes les commandes existantes.
+POST /commandes: Crée une nouvelle commande.
+GET /commandes/{id}: Récupère une commande par son ID.
+PUT /commandes/{id}: Met à jour une commande existante.
+DELETE /commandes/{id}: Supprime une commande par son ID.
 
-java -jar build/libs/nom-du-fichier.jar
+Démarrage de l'application
+Pour démarrer l'application, exécutez la classe principale MaximilienmarcoApplication. L'application sera accessible à l'URL http://localhost:8080.
 
-
-## Utilisation des commandes
-
-### maCommande
-
-La commande "maCommande" permet d'exécuter une opération spécifique. Voici comment l'utiliser :
-
-java -jar build/libs/nom-du-fichier.jar maCommande --option=monOption argument
-
-
-- `--option` : Spécifie une option personnalisée.
-- `argument` : Spécifie un argument requis.
-
-La commande "maCommande" effectuera une opération en utilisant les options et l'argument spécifiés.
-
-## Intégration avec d'autres blocs de l'API
-
-Ce bloc de commandes peut être intégré avec d'autres blocs de l'API en utilisant les points d'entrée appropriés. Assurez-vous de consulter la documentation spécifique à chaque bloc pour connaître les points d'entrée disponibles et les exemples d'intégration.
-
-## Documentation supplémentaire
-
-Pour plus de détails sur les fonctionnalités et la configuration de l'API, veuillez consulter la documentation complète disponible dans le dossier "docs" du projet.
-
-## Développeurs
-
-Ce projet a été développé par [Marc-Olivier CAS](https://github.com/Marc-Olivier-Cas/atelier4) et [Maximilen DELIBES-HOUDAYER](https://github.com/Marc-Olivier-Cas/atelier4).
-
-## Contributions
-
-Les contributions à ce projet sont les bienvenues. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
-
-1. Fork du projet.
-2. Créez une nouvelle branche avec une fonctionnalité ou une correction de bug.
-3. Effectuez les modifications nécessaires et testez-les.
-4. Soumettez une pull request détaillant les modifications apportées.
-
-## Licence
-
-Ce projet est sous licence [Nom de la licence]. Veuillez consulter le fichier LICENSE pour plus d'informations.
-
-
+Assurez-vous d'avoir une instance de MySQL exécutée et que les informations de connexion sont correctement configurées dans application.properties.
