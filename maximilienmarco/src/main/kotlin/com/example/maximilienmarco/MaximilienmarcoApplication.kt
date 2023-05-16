@@ -7,12 +7,12 @@ import org.springframework.boot.runApplication
 import picocli.CommandLine
 
 @SpringBootApplication
-class Application(private val commandeHandler: CommandeHandler) : CommandLineRunner {
+class MaximilienmarcoApplication(private val commandeHandler: CommandeHandler) : CommandLineRunner {
     override fun run(vararg args: String?) {
         CommandLine(commandeHandler).execute(*args)
     }
 }
 
 fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+    runApplication<MaximilienmarcoApplication>(*args)
 }
