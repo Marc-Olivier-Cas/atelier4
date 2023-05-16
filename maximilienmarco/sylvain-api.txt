@@ -1,0 +1,2 @@
+Pour information, les controller products et user ont été ajoutés pour simuler la récuperation
+d'une api, mais ils ne sont pas fonctionnels par manque de temps, et ne sont pas utilisés dans le projet.
