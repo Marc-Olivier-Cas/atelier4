@@ -2,13 +2,12 @@ package com.example.maximilienmarco
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @SpringBootApplication
-class MaximilienmarcoApplication {
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            runApplication<MaximilienmarcoApplication>(*args)
-        }
-    }
+@EnableJpaRepositories("com.example.maximilienmarco.repository")
+class MaximilienmarcoApplication
+
+fun main(args: Array<String>) {
+    runApplication<MaximilienmarcoApplication>(*args)
 }

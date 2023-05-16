@@ -31,7 +31,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation("mysql:mysql-connector-java:8.0.27")
+    implementation("mysql:mysql-connector-java:8.0.26")
     implementation("info.picocli:picocli:4.6.1")
     implementation("javax.persistence:javax.persistence-api:2.2")
     implementation("org.springframework.boot:spring-boot-starter-web")

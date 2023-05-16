@@ -3,13 +3,18 @@ package com.example.maximilienmarco.entity
 import javax.persistence.*
 
 @Entity
-@Table(name = "commandes")
-class Commande {
+@Table(name = "commande")
+data class Commande(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+    val id: Long = 0,
 
-    var libelle: String? = null
+    @Column(nullable = false)
+    var nom: String,
 
-    // Getters et setters (ou utilisez les annotations @JvmField et @JvmName pour les propriétés)
-}
+    @Column(nullable = false)
+    var type: String,
+
+    @Column(nullable = false)
+    var prix: Double
+)
