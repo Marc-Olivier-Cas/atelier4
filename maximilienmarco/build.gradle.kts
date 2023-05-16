@@ -28,6 +28,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("mysql:mysql-connector-java:8.0.27")
+    implementation ("info.picocli:picocli:4.6.1")
 }
 
 tasks.withType<KotlinCompile> {
